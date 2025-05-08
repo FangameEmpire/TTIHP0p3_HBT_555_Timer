@@ -15,7 +15,7 @@ project:
   uses_3v3: false       # Keep false for this shuttle
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_555_logic"
+  top_module:  "tt_um_555_1x1"
 
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        
@@ -24,8 +24,8 @@ project:
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
-  ui[1]: ""
+  ui[0]: "VI_Timer_0_En"
+  ui[1]: "VI_Timer_1_En"
   ui[2]: ""
   ui[3]: ""
   ui[4]: ""
@@ -34,7 +34,7 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: ""
+  uo[0]: "VO_Timer_0_Out"
   uo[1]: ""
   uo[2]: ""
   uo[3]: ""
