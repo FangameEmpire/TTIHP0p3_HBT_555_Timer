@@ -9,12 +9,12 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+Nominally, a 555 timer using only NPN devices. The comparators and flip flops have been modified a bit from the original 555.
 
 ## How to test
 
-Explain how to use your project
+TBD. Ideally, there will be one full 555 with analog pins, and one internal 555 that drives a counter.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+Standard 555 supporting components.
