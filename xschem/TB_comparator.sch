@@ -89,10 +89,15 @@ C {devices/code_shown.sym} 440 80 0 0 {name=NGSPICE
 only_toplevel=true
 value="
 .lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerHBT.lib hbt_typ
+*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerHBT.lib hbt_typ_stat
 .lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ
+*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ_stat
+.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
 
-.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/resistors_stat.lib
-.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/resistors_mod.lib
+.include /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.ref/sg13g2_stdcell/spice/sg13g2_stdcell.spice
+
+*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/resistors_stat.lib
+*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/resistors_mod.lib
 
 * this option enables mos model bin 
 * selection based on W/NF instead of W
@@ -133,7 +138,8 @@ write TB_comparator.raw
 set appendwrite
 
 .endc
-" }
+"
+}
 C {devices/launcher.sym} 630 20 0 0 {name=h1
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
@@ -143,7 +149,7 @@ C {devices/lab_wire.sym} 80 -40 0 0 {name=p1 sig_type=std_logic lab=avdd}
 C {devices/lab_wire.sym} 80 180 0 0 {name=p2 sig_type=std_logic lab=avdd}
 C {devices/lab_wire.sym} 80 120 0 0 {name=p3 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} 80 340 0 0 {name=p4 sig_type=std_logic lab=agnd}
-C {/foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -240 110 0 0 {name=R3
+C {sg13g2_pr/rhigh.sym} -240 110 0 0 {name=R3
 w=0.5e-6
 l=1.59e-6
 model=rhigh
@@ -151,7 +157,7 @@ spiceprefix=X
 b=0
 m=1
 }
-C {/foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -240 210 0 0 {name=R1
+C {sg13g2_pr/rhigh.sym} -240 210 0 0 {name=R1
 w=0.5e-6
 l=1.59e-6
 model=rhigh
@@ -159,7 +165,7 @@ spiceprefix=X
 b=0
 m=1
 }
-C {/foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -240 310 0 0 {name=R2
+C {sg13g2_pr/rhigh.sym} -240 310 0 0 {name=R2
 w=0.5e-6
 l=1.59e-6
 model=rhigh
@@ -182,9 +188,3 @@ C {devices/lab_wire.sym} 160 20 0 1 {name=p18 sig_type=std_logic lab=VB2_VoutP}
 C {devices/lab_wire.sym} 160 60 0 1 {name=p19 sig_type=std_logic lab=VB2_VoutN}
 C {devices/lab_wire.sym} 160 240 0 1 {name=p20 sig_type=std_logic lab=VB1_VoutP}
 C {devices/lab_wire.sym} 160 280 0 1 {name=p21 sig_type=std_logic lab=VB1_VoutN}
-C {/foss/pdks/sg13g2/libs.tech/xschem/sg13g2_tests/dc_hbt_13g2.sym} 420 -250 0 0 {name=x3}
-C {devices/code_shown.sym} 440 -80 0 0 {name=MODEL only_toplevel=true
-format="tcleval( @value )"
-value="
-.lib $::SG13G2_MODELS/cornerHBT.lib hbt_typ
-"}
