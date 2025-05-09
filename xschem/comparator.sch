@@ -1,5 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -40,24 +39,12 @@ C {devices/ipin.sym} 70 -170 0 0 {name=p2 lab=vinp}
 C {devices/opin.sym} 290 -220 0 0 {name=p3 lab=voutp}
 C {devices/iopin.sym} 190 -20 0 0 {name=p4 lab=agnd}
 C {devices/ipin.sym} 310 -170 0 1 {name=p5 lab=vinn}
-C {sg13g2_pr/rppd.sym} 190 -90 0 0 {name=R2
-w=0.5e-6
-l=7.5e-6
-model=rppd
-spiceprefix=X
-b=0
-m=1
-}
 C {devices/opin.sym} 90 -220 0 1 {name=p6 lab=voutn}
-C {/foss/pdks/sg13g2/libs.tech/xschem/sg13g2_pr/npn13G2.sym} 270 -170 0 1 {name=Q1
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/npn13G2.sym} 270 -170 0 1 {name=Q1
 model=npn13G2
 spiceprefix=X
 Nx=1}
-C {/foss/pdks/sg13g2/libs.tech/xschem/sg13g2_pr/npn13G2.sym} 110 -170 0 0 {name=Q2
-model=npn13G2
-spiceprefix=X
-Nx=1}
-C {sg13g2_pr/rppd.sym} 250 -270 0 0 {name=R1
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 250 -270 0 0 {name=R1
 w=0.5e-6
 l=7.5e-6
 model=rppd
@@ -65,7 +52,7 @@ spiceprefix=X
 b=0
 m=1
 }
-C {sg13g2_pr/rppd.sym} 130 -270 0 0 {name=R3
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 190 -90 0 0 {name=R2
 w=0.5e-6
 l=7.5e-6
 model=rppd
@@ -73,3 +60,15 @@ spiceprefix=X
 b=0
 m=1
 }
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 130 -270 0 0 {name=R3
+w=0.5e-6
+l=7.5e-6
+model=rppd
+spiceprefix=X
+b=0
+m=1
+}
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/npn13G2.sym} 110 -170 0 0 {name=Q2
+model=npn13G2
+spiceprefix=X
+Nx=1}

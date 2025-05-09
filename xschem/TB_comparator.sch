@@ -1,5 +1,4 @@
-v {xschem version=3.4.5 file_version=1.2
-}
+v {xschem version=3.4.6 file_version=1.2}
 G {}
 K {}
 V {}
@@ -78,7 +77,7 @@ N 120 240 160 240 {
 lab=VB1_VoutP}
 N 120 280 160 280 {
 lab=VB1_VoutN}
-C {/foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/comparator.sym} 0 40 0 0 {name=x1}
+C {comparator.sym} 0 40 0 0 {name=x1}
 C {devices/vsource.sym} -160 -150 0 0 {name=Vsrc_agnd value=0 savecurrent=false}
 C {devices/vsource.sym} -60 -150 0 0 {name=Vsrc_avdd value=1.8 savecurrent=false}
 C {devices/gnd.sym} -160 -80 0 0 {name=l1 lab=GND}
@@ -144,28 +143,12 @@ C {devices/launcher.sym} 630 20 0 0 {name=h1
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
-C {/foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/comparator.sym} 0 260 0 0 {name=x2}
+C {comparator.sym} 0 260 0 0 {name=x2}
 C {devices/lab_wire.sym} 80 -40 0 0 {name=p1 sig_type=std_logic lab=avdd}
 C {devices/lab_wire.sym} 80 180 0 0 {name=p2 sig_type=std_logic lab=avdd}
 C {devices/lab_wire.sym} 80 120 0 0 {name=p3 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} 80 340 0 0 {name=p4 sig_type=std_logic lab=agnd}
-C {sg13g2_pr/rhigh.sym} -240 110 0 0 {name=R3
-w=0.5e-6
-l=1.59e-6
-model=rhigh
-spiceprefix=X
-b=0
-m=1
-}
-C {sg13g2_pr/rhigh.sym} -240 210 0 0 {name=R1
-w=0.5e-6
-l=1.59e-6
-model=rhigh
-spiceprefix=X
-b=0
-m=1
-}
-C {sg13g2_pr/rhigh.sym} -240 310 0 0 {name=R2
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -240 110 0 0 {name=R3
 w=0.5e-6
 l=1.59e-6
 model=rhigh
@@ -188,3 +171,19 @@ C {devices/lab_wire.sym} 160 20 0 1 {name=p18 sig_type=std_logic lab=VB2_VoutP}
 C {devices/lab_wire.sym} 160 60 0 1 {name=p19 sig_type=std_logic lab=VB2_VoutN}
 C {devices/lab_wire.sym} 160 240 0 1 {name=p20 sig_type=std_logic lab=VB1_VoutP}
 C {devices/lab_wire.sym} 160 280 0 1 {name=p21 sig_type=std_logic lab=VB1_VoutN}
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -240 310 0 0 {name=R1
+w=0.5e-6
+l=1.59e-6
+model=rhigh
+spiceprefix=X
+b=0
+m=1
+}
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -240 210 0 0 {name=R2
+w=0.5e-6
+l=1.59e-6
+model=rhigh
+spiceprefix=X
+b=0
+m=1
+}
