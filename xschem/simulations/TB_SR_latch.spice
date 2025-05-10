@@ -103,8 +103,8 @@ XR8 Q_bar avdd rppd w=0.5e-6 l=2e-6 m=1 b=0
 *.ipin vin
 *.opin vout
 *.iopin agnd
-x1 avdd vin net1 agnd inverter
-x2 avdd net1 vout agnd inverter
+x1 avdd vin NOT agnd inverter
+x2 avdd NOT vout agnd inverter
 .ends
 
 

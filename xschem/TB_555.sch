@@ -16,8 +16,14 @@ subdivx=4
 
  unity=1
 dataset=-1
-color=4
-node=v(555_Vout)
+color="4 5 5 6 9 7 8"
+node="v(555_Vout)
+*v(x1.S)
+*v(x1.R)
+v(x1.TH_comp)
+v(x1.TR_comp)
+v(x1.Dis)
+v(x1.THTR)"
 sweep=t
 
 
@@ -29,7 +35,7 @@ logy=0
 unitx=1
 y1=-0.2
 x1=0
-x2=1m
+x2=1u
 y2=2}
 N -220 -580 -220 -540 {
 lab=agnd}
@@ -41,8 +47,8 @@ N -120 -580 -120 -540 {
 lab=avdd}
 N -500 -420 -500 -380 {lab=avdd}
 N -500 -120 -500 -80 {lab=agnd}
-N -20 -300 -20 -180 {lab=VB_2}
-N -60 -180 -20 -180 {lab=VB_2}
+N -20 -300 -20 -180 {lab=Dis}
+N -60 -180 -20 -180 {lab=Dis}
 N -60 -140 -20 -140 {lab=VB_1}
 N -20 -140 -20 -20 {lab=VB_1}
 N -360 -180 -360 -20 {lab=VB_1}
@@ -51,11 +57,11 @@ N -360 -200 -360 -180 {lab=VB_1}
 N -360 -20 -20 -20 {lab=VB_1}
 N -280 -140 -240 -140 {lab=555_Vout}
 N -500 -200 -500 -180 {lab=VB_1}
-N -500 -300 -500 -280 {lab=VB_2}
+N -500 -300 -500 -280 {lab=Dis}
 N -500 -200 -360 -200 {lab=VB_1}
 N -500 -220 -500 -200 {lab=VB_1}
-N -500 -300 -20 -300 {lab=VB_2}
-N -500 -320 -500 -300 {lab=VB_2}
+N -500 -300 -20 -300 {lab=Dis}
+N -500 -320 -500 -300 {lab=Dis}
 N -280 -80 -280 -60 {lab=agnd}
 C {555.sym} -240 -220 0 0 {name=x1}
 C {devices/vsource.sym} -220 -510 0 0 {name=Vsrc_agnd value=0 savecurrent=false}
@@ -104,7 +110,7 @@ op
 echo
 
 * Analyses
-tran 1m 1
+tran 1n 1u
 remzerovec
 
 * Inputs
@@ -122,8 +128,8 @@ set appendwrite
 .endc
 "
 }
-C {devices/lab_wire.sym} -500 -300 0 0 {name=p6 sig_type=std_logic lab=VB_2}
-C {devices/lab_wire.sym} -500 -200 0 0 {name=p10 sig_type=std_logic lab=VB_1}
+C {devices/lab_wire.sym} -500 -300 0 0 {name=p6 sig_type=std_logic lab=Dis}
+C {devices/lab_wire.sym} -500 -200 0 0 {name=p10 sig_type=std_logic lab=THTR}
 C {res.sym} -500 -350 0 0 {name=R1
 value=1k
 footprint=1206

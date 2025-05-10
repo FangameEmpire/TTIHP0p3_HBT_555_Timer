@@ -16,11 +16,12 @@ subdivx=4
 
  unity=1
 dataset=-1
-color="4 5 6 7"
+color="4 5 6 7 5"
 node="v(S)
-v(R)
-v(Q)
-*v(Q_bar)"
+*v(R)
+*v(Q)
+*v(Q_bar)
+*v(x9.NOT)"
 sweep=t
 
 

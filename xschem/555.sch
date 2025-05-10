@@ -37,8 +37,8 @@ N -780 -180 -780 -80 {lab=agnd}
 N -780 -280 -700 -280 {lab=agnd}
 N -780 -180 -700 -180 {lab=agnd}
 N -780 -280 -780 -180 {lab=agnd}
-N -180 -140 -140 -140 {lab=#net1}
-N -180 -320 -140 -320 {lab=#net2}
+N -180 -140 -140 -140 {lab=TR_comp}
+N -180 -320 -140 -320 {lab=TH_comp}
 N -260 -200 -100 -200 {lab=avdd}
 N -260 -40 -100 -40 {lab=agnd}
 N -100 -80 -100 -40 {lab=agnd}
@@ -47,18 +47,18 @@ N -260 -220 -100 -220 {lab=agnd}
 N -100 -260 -100 -220 {lab=agnd}
 N -580 -280 -300 -280 {lab=VB_2}
 N -580 -140 -300 -140 {lab=VB_1}
-N -20 -260 40 -260 {lab=#net3}
-N -20 -260 -20 -140 {lab=#net3}
-N 20 -220 40 -220 {lab=#net4}
-N 20 -320 20 -220 {lab=#net4}
-N -20 -320 20 -320 {lab=#net4}
+N -20 -260 40 -260 {lab=S}
+N -20 -260 -20 -140 {lab=S}
+N 20 -220 40 -220 {lab=R}
+N 20 -320 20 -220 {lab=R}
+N -20 -320 20 -320 {lab=R}
 N 80 -300 220 -300 {lab=avdd}
 N 80 -180 220 -180 {lab=agnd}
-N 140 -260 180 -260 {lab=#net5}
-N 180 -260 180 -240 {lab=#net5}
+N 140 -260 180 -260 {lab=Q}
+N 180 -260 180 -240 {lab=Q}
 N 80 -180 80 -40 {lab=agnd}
-N 140 -100 180 -100 {lab=#net6}
-N 140 -220 140 -100 {lab=#net6}
+N 140 -100 180 -100 {lab=Q_bar}
+N 140 -220 140 -100 {lab=Q_bar}
 N 180 -160 220 -160 {lab=avdd}
 N 300 -100 360 -100 {lab=out_bar}
 N 540 -240 540 -210 {lab=DISCHARGE}
@@ -67,7 +67,7 @@ N 360 -180 360 -100 {lab=out_bar}
 N 540 -180 580 -180 {lab=agnd}
 N 580 -180 580 -40 {lab=agnd}
 N 540 -40 580 -40 {lab=agnd}
-N 540 -150 540 -120 {lab=#net7}
+N 540 -150 540 -120 {lab=#net1}
 N 540 -60 540 -40 {lab=agnd}
 N 80 -40 540 -40 {lab=agnd}
 C {devices/opin.sym} 300 -240 0 0 {name=p6 lab=OUT}
@@ -157,3 +157,9 @@ spiceprefix=X
 b=0
 m=1
 }
+C {devices/lab_wire.sym} -20 -260 0 0 {name=p2 sig_type=std_logic lab=S}
+C {devices/lab_wire.sym} 20 -320 0 0 {name=p18 sig_type=std_logic lab=R}
+C {devices/lab_wire.sym} 180 -260 0 0 {name=p19 sig_type=std_logic lab=Q}
+C {devices/lab_wire.sym} 140 -100 0 0 {name=p20 sig_type=std_logic lab=Q_bar}
+C {devices/lab_wire.sym} -140 -320 0 0 {name=p21 sig_type=std_logic lab=TH_comp}
+C {devices/lab_wire.sym} -140 -140 0 0 {name=p22 sig_type=std_logic lab=TR_comp}

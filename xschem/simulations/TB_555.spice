@@ -1,11 +1,11 @@
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/TB_555.sch
 **.subckt TB_555
-x1 avdd VB_1 555_Vout VB_2 VB_1 agnd 555
+x1 avdd THTR 555_Vout Dis THTR agnd 555
 Vsrc_agnd agnd GND 0
 Vsrc_avdd avdd agnd 1.8
-C1 VB_1 agnd 10n m=1
-R1 avdd VB_2 1k m=1
-R2 VB_2 VB_1 1k m=1
+C1 THTR agnd 10n m=1
+R1 avdd Dis 1k m=1
+R2 Dis THTR 1k m=1
 C2 555_Vout agnd 10n m=1
 **** begin user architecture code
 
@@ -37,7 +37,7 @@ op
 echo
 
 * Analyses
-tran 1m 1
+tran 1n 1u
 remzerovec
 
 * Inputs
@@ -74,18 +74,18 @@ XR2 VB_1 VB_2 rhigh w=0.5e-6 l=1.59e-6 m=1 b=0
 XC1 VB_1 agnd cap_cmim w=7.0e-6 l=7.0e-6 m=1
 XC2 VB_2 agnd cap_cmim w=7.0e-6 l=7.0e-6 m=1
 XC3 avdd agnd cap_cmim w=7.0e-6 l=7.0e-6 m=1
-XR4 out_bar net8 rhigh w=0.5e-6 l=1.59e-6 m=1 b=0
-x1 avdd net2 net9 VB_2 THRESHOLD agnd comparator
-x2 avdd net1 net10 TRIGGER VB_1 agnd comparator
-x9 avdd net2 net4 agnd buffer
-x10 avdd net1 net3 agnd buffer
-x3 avdd net6 net5 agnd net3 net4 SR_latch
-x4 avdd net5 OUT agnd buffer
-x5 avdd net6 out_bar agnd buffer
-* noconn #net9
-* noconn #net10
-XQ1 DISCHARGE net8 net7 agnd npn13G2 Nx=1
-XR5 agnd net7 rppd w=1e-6 l=0.5e-6 m=1 b=0
+XR4 out_bar net2 rhigh w=0.5e-6 l=1.59e-6 m=1 b=0
+x1 avdd TH_comp net3 VB_2 THRESHOLD agnd comparator
+x2 avdd TR_comp net4 TRIGGER VB_1 agnd comparator
+x9 avdd TH_comp R agnd buffer
+x10 avdd TR_comp S agnd buffer
+x3 avdd Q_bar Q agnd S R SR_latch
+x4 avdd Q OUT agnd buffer
+x5 avdd Q_bar out_bar agnd buffer
+* noconn #net3
+* noconn #net4
+XQ1 DISCHARGE net2 net1 agnd npn13G2 Nx=1
+XR5 agnd net1 rppd w=1e-6 l=0.5e-6 m=1 b=0
 .ends
 
 
@@ -115,8 +115,8 @@ XQ2 voutn vinp ee agnd npn13G2 Nx=1
 *.ipin vin
 *.opin vout
 *.iopin agnd
-x1 avdd vin net1 agnd inverter
-x2 avdd net1 vout agnd inverter
+x1 avdd vin NOT agnd inverter
+x2 avdd NOT vout agnd inverter
 .ends
 
 
