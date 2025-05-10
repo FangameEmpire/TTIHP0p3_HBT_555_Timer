@@ -8,31 +8,35 @@ B 2 -730 130 -300 450 {flags=graph
 
 
 divy = 5
-subdivy=8
+subdivy=4
 
 
 divx=4
-subdivx=8
+subdivx=4
 
  unity=1
 dataset=-1
-color="4 5 6"
-node="ratio_sch
-ratio_mod
-ratio_gds"
-sweep=frequency
+color="4 4 9 6 7 12 5"
+node="v(VB_2)
+v(VB_1)
+v(stim)
+*v(VB2_VoutP)
+*v(VB2_VoutN)
+*v(VB1_VoutP)
+*v(VB1_VoutN)"
+sweep=t
 
 
-logx=1
+logx=0
 
-logy=1
+logy=0
 
 
 unitx=1
-y1=-3
+y1=-0.2
 x1=0
-x2=11
-y2=3}
+x2=10u
+y2=2}
 N -160 -220 -160 -180 {
 lab=agnd}
 N -160 -120 -160 -80 {
@@ -77,6 +81,11 @@ N 120 240 160 240 {
 lab=VB1_VoutP}
 N 120 280 160 280 {
 lab=VB1_VoutN}
+N -240 580 -60 580 {lab=agnd}
+N -60 560 -60 580 {lab=agnd}
+N -240 560 -240 580 {lab=agnd}
+N -240 460 -240 500 {lab=VB_2}
+N -60 460 -60 500 {lab=VB_1}
 C {comparator.sym} 0 40 0 0 {name=x1}
 C {devices/vsource.sym} -160 -150 0 0 {name=Vsrc_agnd value=0 savecurrent=false}
 C {devices/vsource.sym} -60 -150 0 0 {name=Vsrc_avdd value=1.8 savecurrent=false}
@@ -111,11 +120,18 @@ op
 * Print newline
 echo
 
-* Sweep frequency
+* Stimulus voltage
+*Vstim stim 0 DC=0V
+*.param Vstim = PWL(0 0 1u 1.8 2u 0 3u 1.8 4u 0)
+
+* Sweep frequency and time
 write TB_comparator.raw
 set appendwrite
+
+* Analyses
 ac dec 100 1 1e11
 tran 10n 10u
+dc
 remzerovec
 
 * Inputs
@@ -128,10 +144,9 @@ let vout_P1 = v(VB1_VoutP)
 let vout_N1 = v(VB1_VoutN)
 
 * Plot outputs
-plot vout_P2
-plot vout_N2
-plot vout_P1
-plot vout_N1
+*plot v(VB_2)
+*plot v(VB_1)
+*plot v(stim)
 
 write TB_comparator.raw
 set appendwrite
@@ -162,7 +177,7 @@ C {devices/lab_wire.sym} -240 260 0 0 {name=p10 sig_type=std_logic lab=VB_1}
 C {devices/lab_wire.sym} -240 160 0 0 {name=p11 sig_type=std_logic lab=VB_2}
 C {devices/lab_wire.sym} -20 60 0 0 {name=p12 sig_type=std_logic lab=VB_2}
 C {devices/lab_wire.sym} -20 280 0 0 {name=p13 sig_type=std_logic lab=VB_1}
-C {devices/vsource.sym} 60 -150 0 0 {name=Vsrc_stim value="PWL(0 0 0.5u 1 1u 0 1.5u 1 2u 0) 0.0 0" savecurrent=false}
+C {devices/vsource.sym} 60 -150 0 0 {name=Vsrc_stim value="PWL(0 0 1u 0 2u 1.8 3u 1.8 4u 0 5u 0 6u 7u 1.8 8u 1.8 9u 0 10u 0)" savecurrent=false}
 C {devices/lab_wire.sym} 60 -80 0 0 {name=p14 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} 60 -220 0 0 {name=p15 sig_type=std_logic lab=stim}
 C {devices/lab_wire.sym} -20 20 0 0 {name=p16 sig_type=std_logic lab=stim}
@@ -187,3 +202,18 @@ spiceprefix=X
 b=0
 m=1
 }
+C {/foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/cap_cmim.sym} -240 530 0 0 {name=C1
+model=cap_cmim
+w=7.0e-6
+l=7.0e-6
+m=1
+spiceprefix=X}
+C {/foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/cap_cmim.sym} -60 530 0 0 {name=C2
+model=cap_cmim
+w=7.0e-6
+l=7.0e-6
+m=1
+spiceprefix=X}
+C {devices/lab_wire.sym} -240 460 0 0 {name=p22 sig_type=std_logic lab=VB_2}
+C {devices/lab_wire.sym} -60 460 0 0 {name=p23 sig_type=std_logic lab=VB_1}
+C {devices/lab_wire.sym} -140 580 0 0 {name=p24 sig_type=std_logic lab=agnd}

@@ -54,7 +54,7 @@ m=1
 }
 C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 190 -90 0 0 {name=R2
 w=0.5e-6
-l=7.5e-6
+l=0.5e-6
 model=rppd
 spiceprefix=X
 b=0
