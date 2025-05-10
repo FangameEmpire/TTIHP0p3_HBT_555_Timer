@@ -29,7 +29,7 @@ logy=0
 unitx=1
 y1=-0.2
 x1=0
-x2=40u
+x2=1m
 y2=2}
 N -220 -580 -220 -540 {
 lab=agnd}
@@ -56,6 +56,7 @@ N -500 -200 -360 -200 {lab=VB_1}
 N -500 -220 -500 -200 {lab=VB_1}
 N -500 -300 -20 -300 {lab=VB_2}
 N -500 -320 -500 -300 {lab=VB_2}
+N -280 -80 -280 -60 {lab=agnd}
 C {555.sym} -240 -220 0 0 {name=x1}
 C {devices/vsource.sym} -220 -510 0 0 {name=Vsrc_agnd value=0 savecurrent=false}
 C {devices/vsource.sym} -120 -510 0 0 {name=Vsrc_avdd value=1.8 savecurrent=false}
@@ -103,7 +104,7 @@ op
 echo
 
 * Analyses
-tran 0.1u 400u
+tran 1m 1
 remzerovec
 
 * Inputs
@@ -133,3 +134,9 @@ value=1k
 footprint=1206
 device=resistor
 m=1}
+C {capa.sym} -280 -110 0 0 {name=C2
+m=1
+value=10n
+footprint=1206
+device="ceramic capacitor"}
+C {devices/lab_wire.sym} -280 -60 0 0 {name=p11 sig_type=std_logic lab=agnd}

@@ -1,67 +1,5 @@
-** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/TB_555.sch
-**.subckt TB_555
-x1 avdd VB_1 555_Vout VB_2 VB_1 agnd 555
-Vsrc_agnd agnd GND 0
-Vsrc_avdd avdd agnd 1.8
-C1 VB_1 agnd 10n m=1
-R1 avdd VB_2 1k m=1
-R2 VB_2 VB_1 1k m=1
-C2 555_Vout agnd 10n m=1
-**** begin user architecture code
-
-
-.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerHBT.lib hbt_typ
-.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ
-.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerCAP.lib cap_typ
-.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerMOSlv.lib mos_tt
-
-.include /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.ref/sg13g2_stdcell/spice/sg13g2_stdcell.spice
-
-*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerHBT.lib hbt_typ_stat
-*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/cornerRES.lib res_typ_stat
-
-*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/resistors_stat.lib
-*.lib /foss/designs/IHP-Open-PDK/ihp-sg13g2/libs.tech/ngspice/models/resistors_mod.lib
-
-* this option enables mos model bin
-* selection based on W/NF instead of W
-.option wnflag=1
-
-.option savecurrents
-
-.control
-save all
-op
-
-* Print newline
-echo
-
-* Analyses
-tran 1m 1
-remzerovec
-
-* Inputs
-
-
-* Outputs
-
-
-* Plot outputs
-
-
-write TB_555.raw
-set appendwrite
-
-.endc
-
-
-**** end user architecture code
-**.ends
-
-* expanding   symbol:  555.sym # of pins=6
-** sym_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/555.sym
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/555.sch
-.subckt 555 avdd THRESHOLD OUT DISCHARGE TRIGGER agnd
+**.subckt 555 avdd THRESHOLD OUT DISCHARGE TRIGGER agnd
 *.opin OUT
 *.iopin avdd
 *.iopin agnd
@@ -85,9 +23,8 @@ x5 avdd net6 out_bar agnd buffer
 * noconn #net9
 * noconn #net10
 XQ1 DISCHARGE net8 net7 agnd npn13G2 Nx=1
-XR5 agnd net7 rppd w=1e-6 l=0.5e-6 m=1 b=0
-.ends
-
+XR5 agnd net7 rppd w=2e-6 l=0.5e-6 m=1 b=0
+**.ends
 
 * expanding   symbol:  comparator.sym # of pins=6
 ** sym_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/comparator.sym
@@ -156,5 +93,4 @@ XR1 vout avdd rhigh w=1e-6 l=0.5e-6 m=1 b=0
 XR2 vin base rhigh w=0.5e-6 l=0.5e-6 m=1 b=0
 .ends
 
-.GLOBAL GND
 .end

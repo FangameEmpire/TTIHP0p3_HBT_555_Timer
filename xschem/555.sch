@@ -12,7 +12,7 @@ L 4 -440 -400 0 -400 {}
 L 4 -440 0 0 0 {}
 L 4 0 -400 0 0 {}
 L 4 -0 -400 380 -400 {}
-L 4 380 -400 380 -0 {}
+L 4 380 -400 380 0 {}
 L 4 0 0 380 -0 {}
 L 4 380 -400 600 -400 {}
 L 4 600 -400 600 -0 {}
@@ -57,21 +57,25 @@ N 80 -180 220 -180 {lab=agnd}
 N 140 -260 180 -260 {lab=#net5}
 N 180 -260 180 -240 {lab=#net5}
 N 80 -180 80 -40 {lab=agnd}
-N 80 -40 540 -40 {lab=agnd}
 N 140 -100 180 -100 {lab=#net6}
 N 140 -220 140 -100 {lab=#net6}
 N 180 -160 220 -160 {lab=avdd}
 N 300 -100 360 -100 {lab=out_bar}
-N 360 -160 360 -100 {lab=out_bar}
-N 360 -160 440 -160 {lab=out_bar}
-N 540 -160 540 -40 {lab=agnd}
-N 540 -220 540 -190 {lab=DISCHARGE}
+N 540 -240 540 -210 {lab=DISCHARGE}
+N 360 -180 440 -180 {lab=out_bar}
+N 360 -180 360 -100 {lab=out_bar}
+N 540 -180 580 -180 {lab=agnd}
+N 580 -180 580 -40 {lab=agnd}
+N 540 -40 580 -40 {lab=agnd}
+N 540 -150 540 -120 {lab=#net7}
+N 540 -60 540 -40 {lab=agnd}
+N 80 -40 540 -40 {lab=agnd}
 C {devices/opin.sym} 300 -240 0 0 {name=p6 lab=OUT}
 C {devices/iopin.sym} -580 -380 0 0 {name=p1 lab=avdd}
 C {devices/iopin.sym} -580 -40 0 0 {name=p4 lab=agnd}
 C {devices/iopin.sym} -300 -100 0 1 {name=p3 lab=TRIGGER}
 C {devices/iopin.sym} -300 -320 0 1 {name=p5 lab=THRESHOLD}
-C {devices/iopin.sym} 540 -220 0 1 {name=p7 lab=DISCHARGE}
+C {devices/iopin.sym} 540 -240 0 1 {name=p7 lab=DISCHARGE}
 C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} -580 -310 0 0 {name=R3
 w=0.5e-6
 l=1.59e-6
@@ -116,7 +120,7 @@ w=7.0e-6
 l=7.0e-6
 m=1
 spiceprefix=X}
-C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} 470 -160 1 0 {name=R4
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rhigh.sym} 470 -180 1 0 {name=R4
 w=0.5e-6
 l=1.59e-6
 model=rhigh
@@ -141,7 +145,15 @@ C {devices/lab_wire.sym} 80 -40 0 0 {name=p17 sig_type=std_logic lab=agnd}
 C {noconn.sym} -180 -280 0 1 {name=l1}
 C {noconn.sym} -180 -100 0 1 {name=l2}
 C {devices/lab_wire.sym} 300 -100 0 1 {name=p12 sig_type=std_logic lab=out_bar}
-C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/npn13G2.sym} 520 -160 0 0 {name=Q1
+C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/npn13G2.sym} 520 -180 0 0 {name=Q1
 model=npn13G2
 spiceprefix=X
 Nx=1}
+C {sg13g2_pr/rppd.sym} 540 -90 0 0 {name=R5
+w=1e-6
+l=0.5e-6
+model=rppd
+spiceprefix=X
+b=0
+m=1
+}
