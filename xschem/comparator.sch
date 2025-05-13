@@ -54,7 +54,7 @@ spiceprefix=X
 Nx=1}
 C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 250 -270 0 0 {name=R1
 w=0.5e-6
-l=30e-6
+l=20e-6
 model=rppd
 spiceprefix=X
 b=0
@@ -62,7 +62,7 @@ m=1
 }
 C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 190 -90 0 0 {name=R2
 w=0.5e-6
-l=0.5e-6
+l=2e-6
 model=rppd
 spiceprefix=X
 b=0
@@ -70,7 +70,7 @@ m=1
 }
 C {/foss/pdks/ihp-sg13g2/libs.tech/xschem/sg13g2_pr/rppd.sym} 130 -270 0 0 {name=R3
 w=0.5e-6
-l=30e-6
+l=20e-6
 model=rppd
 spiceprefix=X
 b=0

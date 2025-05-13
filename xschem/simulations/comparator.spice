@@ -1,0 +1,9 @@
+** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/comparator.sch
+.subckt comparator avdd voutp voutn vinn vinp agnd
+*.PININFO avdd:B vinp:I voutp:O agnd:B vinn:I voutn:O
+XQ1 voutp vinn ee agnd npn13G2 Nx=1
+XR1 voutp avdd rppd w=0.5e-6 l=20e-6 m=1 b=0
+XR2 agnd ee rppd w=0.5e-6 l=2e-6 m=1 b=0
+XR3 voutn avdd rppd w=0.5e-6 l=20e-6 m=1 b=0
+XQ2 voutn vinp ee agnd npn13G2 Nx=1
+.ends

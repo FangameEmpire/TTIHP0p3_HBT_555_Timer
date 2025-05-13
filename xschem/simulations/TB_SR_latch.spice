@@ -1,10 +1,10 @@
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/TB_SR_latch.sch
 **.subckt TB_SR_latch
 Vsrc_agnd agnd GND 0
-Vsrc_avdd avdd agnd 1.8
-Vsrc_S S agnd PULSE(0 1.8 0 0.5u 0.5u 3u 6u)
+Vsrc_avdd avdd agnd 1.2
+Vsrc_S S agnd PULSE(0 1.2 0 0.5u 0.5u 3u 6u)
 x1 avdd Q_bar Q agnd S R SR_latch
-Vsrc_R R agnd PULSE(0 1.8 0 0.5u 0.5u 4u 8u)
+Vsrc_R R agnd PULSE(0 1.2 0 0.5u 0.5u 4u 8u)
 x9 avdd Q Q_Buf agnd buffer
 x10 avdd Q_bar Q_bar_Buf agnd buffer
 **** begin user architecture code

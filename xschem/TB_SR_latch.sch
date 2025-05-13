@@ -16,12 +16,14 @@ subdivx=4
 
  unity=1
 dataset=-1
-color="4 5 6 7 5"
+color="4 5 6 7 5 6 7"
 node="v(S)
-*v(R)
+v(R)
 *v(Q)
 *v(Q_bar)
-*v(x9.NOT)"
+*v(x9.NOT)
+v(Q_Buf)
+v(Q_bar_Buf)"
 sweep=t
 
 
@@ -60,12 +62,12 @@ lab=avdd}
 N 300 260 340 260 {
 lab=agnd}
 C {devices/vsource.sym} -160 -130 0 0 {name=Vsrc_agnd value=0 savecurrent=false}
-C {devices/vsource.sym} -60 -130 0 0 {name=Vsrc_avdd value=1.8 savecurrent=false}
+C {devices/vsource.sym} -60 -130 0 0 {name=Vsrc_avdd value=1.2 savecurrent=false}
 C {devices/gnd.sym} -160 -60 0 0 {name=l1 lab=GND}
 C {devices/lab_wire.sym} -160 -200 0 0 {name=p7 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} -60 -200 0 0 {name=p8 sig_type=std_logic lab=avdd}
 C {devices/lab_wire.sym} -60 -60 0 0 {name=p9 sig_type=std_logic lab=agnd}
-C {devices/vsource.sym} 40 -130 0 0 {name=Vsrc_S value="PULSE(0 1.8 0 0.5u 0.5u 3u 6u)" savecurrent=false}
+C {devices/vsource.sym} 40 -130 0 0 {name=Vsrc_S value="PULSE(0 1.2 0 0.5u 0.5u 3u 6u)" savecurrent=false}
 C {devices/lab_wire.sym} 40 -200 0 0 {name=p1 sig_type=std_logic lab=S}
 C {devices/lab_wire.sym} 40 -60 0 0 {name=p2 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} 140 -200 0 0 {name=p3 sig_type=std_logic lab=R}
@@ -139,7 +141,7 @@ set appendwrite
 }
 C {devices/lab_wire.sym} 340 -80 0 0 {name=p12 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} 340 -200 0 0 {name=p13 sig_type=std_logic lab=avdd}
-C {devices/vsource.sym} 140 -130 0 0 {name=Vsrc_R value="PULSE(0 1.8 0 0.5u 0.5u 4u 8u)" savecurrent=false}
+C {devices/vsource.sym} 140 -130 0 0 {name=Vsrc_R value="PULSE(0 1.2 0 0.5u 0.5u 4u 8u)" savecurrent=false}
 C {devices/lab_wire.sym} 340 -20 0 0 {name=p37 sig_type=std_logic lab=avdd}
 C {devices/lab_wire.sym} 340 100 0 0 {name=p38 sig_type=std_logic lab=agnd}
 C {devices/lab_wire.sym} 340 140 0 0 {name=p39 sig_type=std_logic lab=avdd}

@@ -1,23 +1,28 @@
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/TB_comparator.sch
-**.subckt TB_comparator
+.subckt TB_comparator
+
 x1 avdd VB2_VoutP VB2_VoutN VB_2 stim agnd comparator
 Vsrc_agnd agnd GND 0
-Vsrc_avdd avdd agnd 1.8
+Vsrc_avdd avdd agnd 1.2
 x2 avdd VB1_VoutP VB1_VoutN stim VB_1 agnd comparator
 XR3 VB_2 avdd rhigh w=0.5e-6 l=1.59e-6 m=1 b=0
-Vsrc_stim stim agnd PWL(0 0.0 20u 1.8 40u 0)
+Vsrc_stim stim agnd PWL(0 0.0 20u 1.2 40u 0)
 XR1 agnd VB_1 rhigh w=0.5e-6 l=1.59e-6 m=1 b=0
 XR2 VB_1 VB_2 rhigh w=0.5e-6 l=1.59e-6 m=1 b=0
 XC1 VB_2 agnd cap_cmim w=7.0e-6 l=7.0e-6 m=1
 XC2 VB_1 agnd cap_cmim w=7.0e-6 l=7.0e-6 m=1
-x3 VB2_VoutP avdd agnd VB2_VoutP_Bar sg13g2_inv_1
-x4 VB2_VoutN avdd agnd VB2_VoutN_Bar sg13g2_inv_1
-x5 VB1_VoutP avdd agnd VB1_VoutP_Bar sg13g2_inv_1
-x6 VB1_VoutN avdd agnd VB1_VoutN_Bar sg13g2_inv_1
-x7 VB2_VoutP avdd agnd net1 sg13g2_buf_1
-x8 VB1_VoutP avdd agnd net2 sg13g2_buf_1
 x9 avdd VB2_VoutP VB2_VoutP_Buf agnd buffer
 x10 avdd VB1_VoutP VB1_VoutP_Buf agnd buffer
+XM1 avdd_Gated agnd avdd avdd sg13_lv_pmos w=40u l=0.13u ng=8 m=6
+x3 avdd_Gated VB2_VoutP_Gated VB2_VoutN_Gated VB_2 stim agnd comparator
+x4 avdd_Gated VB2_VoutP_Gated VB2_VoutP_Gated_Buf agnd buffer
+x5 avdd_Gated VB2_VoutN_Gated VB2_VoutN_Gated_Buf agnd buffer
+x6 avdd_Gated VB1_VoutP_Gated VB1_VoutN_Gated stim VB_1 agnd comparator
+x7 avdd_Gated VB1_VoutP_Gated VB1_VoutP_Gated_Buf agnd buffer
+x8 avdd_Gated VB1_VoutN_Gated VB1_VoutN_Gated_Buf agnd buffer
+x11 avdd VB2_VoutP_Sweep VB2_VoutN_Sweep B A agnd comparator
+Vsrc_B B agnd 0.8
+Vsrc_A A agnd 0.4
 **** begin user architecture code
 
 
@@ -57,8 +62,10 @@ set appendwrite
 
 * Analyses
 ac dec 100 1 1e11
-tran 10n 40u
-*dc vsrc_stim 0 1.8 0.1
+*tran 10n 40u
+dc vsrc_A 0 1.2 0.1 Vsrc_B 0 1.2 0.1
+
+*dc Vsrc_B 0 0.4
 remzerovec
 
 * Inputs
@@ -82,22 +89,17 @@ set appendwrite
 
 
 **** end user architecture code
-**.ends
+.ends
 
 * expanding   symbol:  comparator.sym # of pins=6
 ** sym_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/comparator.sym
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/comparator.sch
 .subckt comparator avdd voutp voutn vinn vinp agnd
-*.iopin avdd
-*.ipin vinp
-*.opin voutp
-*.iopin agnd
-*.ipin vinn
-*.opin voutn
+*.PININFO avdd:B vinp:I voutp:O agnd:B vinn:I voutn:O
 XQ1 voutp vinn ee agnd npn13G2 Nx=1
-XR1 voutp avdd rppd w=0.5e-6 l=30e-6 m=1 b=0
-XR2 agnd ee rppd w=0.5e-6 l=0.5e-6 m=1 b=0
-XR3 voutn avdd rppd w=0.5e-6 l=30e-6 m=1 b=0
+XR1 voutp avdd rppd w=0.5e-6 l=20e-6 m=1 b=0
+XR2 agnd ee rppd w=0.5e-6 l=2e-6 m=1 b=0
+XR3 voutn avdd rppd w=0.5e-6 l=20e-6 m=1 b=0
 XQ2 voutn vinp ee agnd npn13G2 Nx=1
 .ends
 
@@ -106,12 +108,9 @@ XQ2 voutn vinp ee agnd npn13G2 Nx=1
 ** sym_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/buffer.sym
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/buffer.sch
 .subckt buffer avdd vin vout agnd
-*.iopin avdd
-*.ipin vin
-*.opin vout
-*.iopin agnd
-x1 avdd vin net1 agnd inverter
-x2 avdd net1 vout agnd inverter
+*.PININFO avdd:B vin:I vout:O agnd:B
+x1 avdd vin NOT agnd inverter
+x2 avdd NOT vout agnd inverter
 .ends
 
 
@@ -119,14 +118,10 @@ x2 avdd net1 vout agnd inverter
 ** sym_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/inverter.sym
 ** sch_path: /foss/designs/Tiny_Tapeout/TTIHP0p3_HBT_555_Timer/xschem/inverter.sch
 .subckt inverter avdd vin vout agnd
-*.iopin avdd
-*.ipin vin
-*.opin vout
-*.iopin agnd
+*.PININFO avdd:B vin:I vout:O agnd:B
 XQ1 vout base agnd agnd npn13G2 Nx=10
 XR1 vout avdd rhigh w=1e-6 l=0.5e-6 m=1 b=0
 XR2 vin base rhigh w=0.5e-6 l=0.5e-6 m=1 b=0
 .ends
 
 .GLOBAL GND
-.end
