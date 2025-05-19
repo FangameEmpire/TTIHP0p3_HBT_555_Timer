@@ -3,7 +3,7 @@ project:
   title:        "HBT Comparator"      # Project title
   author:       "Nicklaus Thompson"      # Your name
   discord:      "fangameempire"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "A high-speed 555 timer using SiGE NPN devices"      # One line description of what your project does
+  description:  "A comparator using SiGE NPN devices."      # One line description of what your project does
   language:     "Analog" # other examples include Verilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
