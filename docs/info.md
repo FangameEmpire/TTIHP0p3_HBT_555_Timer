@@ -9,7 +9,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Currently, the project only contains a single NPN comparator. The comparison of ua[0] and ua[1] is sent to ua[2]. The power gate is driven by ui_in[0], drive this high to enable the comparator.
+Currently, the project only contains a single NPN comparator. The comparison of ua[0] and ua[1] is sent to ua[2]. The power gate is driven by ui_in[0], drive this high to enable the comparator. In the fututre, a high-speed 555 Timer may be created using this process.
 
 ## How to test
 
